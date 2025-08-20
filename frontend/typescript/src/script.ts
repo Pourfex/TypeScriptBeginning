@@ -8,16 +8,11 @@ interface Person {
   hasGlasses: boolean;
   hasBeard: boolean;
   hasMustache: boolean;
-  skinTone: 'light' | 'medium' | 'dark' | 'olive';
   hasEarrings: boolean;
-  hasFreckles: boolean;
-  lipColor: 'pink' | 'red' | 'natural' | 'purple';
-  age: 'young' | 'middle-aged' | 'elderly';
-  expression: 'smiling' | 'serious' | 'surprised' | 'sleepy';
 }
 
 class GuessWhoGame {
-  private people: Person[] = [
+  private allPeople: Person[] = [
     {
       name: "Captain Marina",
       hasHat: true,
@@ -27,12 +22,7 @@ class GuessWhoGame {
       hasGlasses: false,
       hasBeard: false,
       hasMustache: false,
-      skinTone: "light",
-      hasEarrings: true,
-      hasFreckles: true,
-      lipColor: "red",
-      age: "middle-aged",
-      expression: "smiling"
+      hasEarrings: true
     },
     {
       name: "Professor Blackwood",
@@ -43,12 +33,7 @@ class GuessWhoGame {
       hasGlasses: true,
       hasBeard: true,
       hasMustache: true,
-      skinTone: "medium",
-      hasEarrings: false,
-      hasFreckles: false,
-      lipColor: "natural",
-      age: "elderly",
-      expression: "serious"
+      hasEarrings: false
     },
     {
       name: "Sunny the Artist",
@@ -59,12 +44,7 @@ class GuessWhoGame {
       hasGlasses: true,
       hasBeard: false,
       hasMustache: false,
-      skinTone: "light",
-      hasEarrings: true,
-      hasFreckles: true,
-      lipColor: "purple",
-      age: "young",
-      expression: "surprised"
+      hasEarrings: true
     },
     {
       name: "Detective Rodriguez",
@@ -75,12 +55,7 @@ class GuessWhoGame {
       hasGlasses: false,
       hasBeard: false,
       hasMustache: true,
-      skinTone: "olive",
-      hasEarrings: false,
-      hasFreckles: false,
-      lipColor: "natural",
-      age: "middle-aged",
-      expression: "serious"
+      hasEarrings: false
     },
     {
       name: "Grandpa Winston",
@@ -91,12 +66,7 @@ class GuessWhoGame {
       hasGlasses: true,
       hasBeard: true,
       hasMustache: true,
-      skinTone: "light",
-      hasEarrings: false,
-      hasFreckles: false,
-      lipColor: "natural",
-      age: "elderly",
-      expression: "smiling"
+      hasEarrings: false
     },
     {
       name: "Luna the Dancer",
@@ -107,12 +77,7 @@ class GuessWhoGame {
       hasGlasses: false,
       hasBeard: false,
       hasMustache: false,
-      skinTone: "dark",
-      hasEarrings: true,
-      hasFreckles: false,
-      lipColor: "pink",
-      age: "young",
-      expression: "smiling"
+      hasEarrings: true
     },
     {
       name: "Chef Giuseppe",
@@ -123,12 +88,7 @@ class GuessWhoGame {
       hasGlasses: false,
       hasBeard: false,
       hasMustache: true,
-      skinTone: "olive",
-      hasEarrings: false,
-      hasFreckles: false,
-      lipColor: "natural",
-      age: "middle-aged",
-      expression: "smiling"
+      hasEarrings: false
     },
     {
       name: "Mystic Sage",
@@ -139,12 +99,7 @@ class GuessWhoGame {
       hasGlasses: true,
       hasBeard: true,
       hasMustache: false,
-      skinTone: "medium",
-      hasEarrings: true,
-      hasFreckles: true,
-      lipColor: "natural",
-      age: "elderly",
-      expression: "sleepy"
+      hasEarrings: true
     },
     {
       name: "Rebel Zara",
@@ -155,12 +110,7 @@ class GuessWhoGame {
       hasGlasses: true,
       hasBeard: false,
       hasMustache: false,
-      skinTone: "light",
-      hasEarrings: true,
-      hasFreckles: true,
-      lipColor: "red",
-      age: "young",
-      expression: "serious"
+      hasEarrings: true
     },
     {
       name: "Admiral Storm",
@@ -171,12 +121,7 @@ class GuessWhoGame {
       hasGlasses: false,
       hasBeard: true,
       hasMustache: true,
-      skinTone: "light",
-      hasEarrings: false,
-      hasFreckles: false,
-      lipColor: "natural",
-      age: "middle-aged",
-      expression: "serious"
+      hasEarrings: false
     },
     {
       name: "Pixie Moonbeam",
@@ -187,12 +132,7 @@ class GuessWhoGame {
       hasGlasses: false,
       hasBeard: false,
       hasMustache: false,
-      skinTone: "light",
-      hasEarrings: true,
-      hasFreckles: true,
-      lipColor: "pink",
-      age: "young",
-      expression: "surprised"
+      hasEarrings: true
     },
     {
       name: "Doctor Vega",
@@ -203,14 +143,10 @@ class GuessWhoGame {
       hasGlasses: true,
       hasBeard: false,
       hasMustache: false,
-      skinTone: "dark",
-      hasEarrings: false,
-      hasFreckles: false,
-      lipColor: "red",
-      age: "middle-aged",
-      expression: "smiling"
+      hasEarrings: false
     }
   ];
+  private currentPeople: Person[] = [];
 
   public displayPeople(elementId: string): void {
     const element: HTMLElement | null = document.getElementById(elementId);
@@ -218,12 +154,59 @@ class GuessWhoGame {
 
     const html = `
       <h2>Guess Who Characters</h2>
+      <div class="filter-buttons">
+        <button onclick="game.showAll()">Show All</button>
+        <button onclick="game.filterByHat(true)">Has Hat</button>
+        <button onclick="game.filterByHat(false)">No Hat</button>
+        <button onclick="game.filterByHair(true)">Has Hair</button>
+        <button onclick="game.filterByHair(false)">No Hair</button>
+        <button onclick="game.filterByGlasses(true)">Has Glasses</button>
+        <button onclick="game.filterByGlasses(false)">No Glasses</button>
+        <button onclick="game.filterByBeard(true)">Has Beard</button>
+        <button onclick="game.filterByBeard(false)">No Beard</button>
+        <button onclick="game.filterByMustache(true)">Has Mustache</button>
+        <button onclick="game.filterByMustache(false)">No Mustache</button>
+        <button onclick="game.filterByEarrings(true)">Has Earrings</button>
+        <button onclick="game.filterByEarrings(false)">No Earrings</button>
+        <button onclick="game.filterByEyeColor('blue')">Blue Eyes</button>
+        <button onclick="game.filterByEyeColor('brown')">Brown Eyes</button>
+        <button onclick="game.filterByEyeColor('green')">Green Eyes</button>
+        <button onclick="game.filterByEyeColor('hazel')">Hazel Eyes</button>
+        <button onclick="game.filterByEyeColor('gray')">Gray Eyes</button>
+        <button onclick="game.filterByHairColor('blonde')">Blonde Hair</button>
+        <button onclick="game.filterByHairColor('brown')">Brown Hair</button>
+        <button onclick="game.filterByHairColor('black')">Black Hair</button>
+        <button onclick="game.filterByHairColor('red')">Red Hair</button>
+        <button onclick="game.filterByHairColor('gray')">Gray Hair</button>
+        <button onclick="game.filterByHairColor('white')">White Hair</button>
+      </div>
       <div class="people-grid">
-        ${this.people.map(person => this.createPersonCard(person)).join('')}
+        ${this.createAllPersonCards()}
       </div>
     `;
     
     element.innerHTML = html;
+  }
+
+  // Create HTML for all person cards using simple for loop
+  private createAllPersonCards(): string {
+    // Check if no people match the filters
+    if (this.currentPeople.length === 0) {
+      return '<div class="no-results">No people match the current filters. Click "Show All" to reset.</div>';
+    }
+
+    // Start with empty string
+    let allCardsHTML = '';
+    
+    // Loop through each person and add their card HTML
+    for (let i = 0; i < this.currentPeople.length; i++) {
+      const person = this.currentPeople[i];
+      const personCardHTML = this.createPersonCard(person);
+      allCardsHTML = allCardsHTML + personCardHTML;
+    }
+    
+    // Return the combined HTML
+    return allCardsHTML;
   }
 
   private createPersonCard(person: Person): string {
@@ -262,37 +245,124 @@ class GuessWhoGame {
             <span class="value ${person.hasMustache ? 'yes' : 'no'}">${person.hasMustache ? 'Yes' : 'No'}</span>
           </div>
           <div class="attribute">
-            <span class="label">Skin Tone:</span>
-            <span class="value skin-${person.skinTone}">${person.skinTone}</span>
-          </div>
-          <div class="attribute">
             <span class="label">Earrings:</span>
             <span class="value ${person.hasEarrings ? 'yes' : 'no'}">${person.hasEarrings ? 'Yes' : 'No'}</span>
-          </div>
-          <div class="attribute">
-            <span class="label">Freckles:</span>
-            <span class="value ${person.hasFreckles ? 'yes' : 'no'}">${person.hasFreckles ? 'Yes' : 'No'}</span>
-          </div>
-          <div class="attribute">
-            <span class="label">Lip Color:</span>
-            <span class="value lip-${person.lipColor}">${person.lipColor}</span>
-          </div>
-          <div class="attribute">
-            <span class="label">Age:</span>
-            <span class="value age-${person.age}">${person.age}</span>
-          </div>
-          <div class="attribute">
-            <span class="label">Expression:</span>
-            <span class="value expr-${person.expression}">${person.expression}</span>
           </div>
         </div>
       </div>
     `;
   }
+
+  // Show all people - reset filter
+  public showAll(): void {
+    this.currentPeople = this.allPeople;
+    this.displayPeople('people-container');
+  }
+
+  // Filter by hat
+  public filterByHat(hasHat: boolean): void {
+    const filtered: Person[] = [];
+    for (let i = 0; i < this.currentPeople.length; i++) {
+      if (this.currentPeople[i].hasHat === hasHat) {
+        filtered.push(this.currentPeople[i]);
+      }
+    }
+    this.currentPeople = filtered;
+    this.displayPeople('people-container');
+  }
+
+  // Filter by hair
+  public filterByHair(hasHair: boolean): void {
+    const filtered: Person[] = [];
+    for (let i = 0; i < this.currentPeople.length; i++) {
+      if (this.currentPeople[i].hasHair === hasHair) {
+        filtered.push(this.currentPeople[i]);
+      }
+    }
+    this.currentPeople = filtered;
+    this.displayPeople('people-container');
+  }
+
+  // Filter by glasses
+  public filterByGlasses(hasGlasses: boolean): void {
+    const filtered: Person[] = [];
+    for (let i = 0; i < this.currentPeople.length; i++) {
+      if (this.currentPeople[i].hasGlasses === hasGlasses) {
+        filtered.push(this.currentPeople[i]);
+      }
+    }
+    this.currentPeople = filtered;
+    this.displayPeople('people-container');
+  }
+
+  // Filter by beard
+  public filterByBeard(hasBeard: boolean): void {
+    const filtered: Person[] = [];
+    for (let i = 0; i < this.currentPeople.length; i++) {
+      if (this.currentPeople[i].hasBeard === hasBeard) {
+        filtered.push(this.currentPeople[i]);
+      }
+    }
+    this.currentPeople = filtered;
+    this.displayPeople('people-container');
+  }
+
+  // Filter by mustache
+  public filterByMustache(hasMustache: boolean): void {
+    const filtered: Person[] = [];
+    for (let i = 0; i < this.currentPeople.length; i++) {
+      if (this.currentPeople[i].hasMustache === hasMustache) {
+        filtered.push(this.currentPeople[i]);
+      }
+    }
+    this.currentPeople = filtered;
+    this.displayPeople('people-container');
+  }
+
+  // Filter by earrings
+  public filterByEarrings(hasEarrings: boolean): void {
+    const filtered: Person[] = [];
+    for (let i = 0; i < this.currentPeople.length; i++) {
+      if (this.currentPeople[i].hasEarrings === hasEarrings) {
+        filtered.push(this.currentPeople[i]);
+      }
+    }
+    this.currentPeople = filtered;
+    this.displayPeople('people-container');
+  }
+
+  // Filter by eye color
+  public filterByEyeColor(eyeColor: string): void {
+    const filtered: Person[] = [];
+    for (let i = 0; i < this.currentPeople.length; i++) {
+      if (this.currentPeople[i].eyeColor === eyeColor) {
+        filtered.push(this.currentPeople[i]);
+      }
+    }
+    this.currentPeople = filtered;
+    this.displayPeople('people-container');
+  }
+
+  // Filter by hair color
+  public filterByHairColor(hairColor: string): void {
+    const filtered: Person[] = [];
+    for (let i = 0; i < this.currentPeople.length; i++) {
+      if (this.currentPeople[i].hairColor === hairColor) {
+        filtered.push(this.currentPeople[i]);
+      }
+    }
+    this.currentPeople = filtered;
+    this.displayPeople('people-container');
+  }
+
+
 }
+
+// Global variable to access from button clicks
+let game: GuessWhoGame;
 
 // Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', (): void => {
-  const game = new GuessWhoGame();
-  game.displayPeople('people-container');
+  game = new GuessWhoGame();
+  game.showAll(); // Initialize with all people
 });
