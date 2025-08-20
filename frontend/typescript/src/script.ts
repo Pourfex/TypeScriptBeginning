@@ -259,103 +259,74 @@ class GuessWhoGame {
     this.displayPeople('people-container');
   }
 
-  // Filter by hat
-  public filterByHat(hasHat: boolean): void {
+  // Generic filter function that takes a condition
+  private filterPeople(condition: (person: Person) => boolean): void {
     const filtered: Person[] = [];
     for (let i = 0; i < this.currentPeople.length; i++) {
-      if (this.currentPeople[i].hasHat === hasHat) {
-        filtered.push(this.currentPeople[i]);
+      const person = this.currentPeople[i];
+      if (condition(person)) {
+        filtered.push(person);
       }
     }
     this.currentPeople = filtered;
     this.displayPeople('people-container');
+  }
+
+  // Filter by hat
+  public filterByHat(hasHat: boolean): void {
+    this.filterPeople(function(person) {
+      return person.hasHat === hasHat;
+    });
   }
 
   // Filter by hair
   public filterByHair(hasHair: boolean): void {
-    const filtered: Person[] = [];
-    for (let i = 0; i < this.currentPeople.length; i++) {
-      if (this.currentPeople[i].hasHair === hasHair) {
-        filtered.push(this.currentPeople[i]);
-      }
-    }
-    this.currentPeople = filtered;
-    this.displayPeople('people-container');
+    this.filterPeople(function(person) {
+      return person.hasHair === hasHair;
+    });
   }
 
   // Filter by glasses
   public filterByGlasses(hasGlasses: boolean): void {
-    const filtered: Person[] = [];
-    for (let i = 0; i < this.currentPeople.length; i++) {
-      if (this.currentPeople[i].hasGlasses === hasGlasses) {
-        filtered.push(this.currentPeople[i]);
-      }
-    }
-    this.currentPeople = filtered;
-    this.displayPeople('people-container');
+    this.filterPeople(function(person) {
+      return person.hasGlasses === hasGlasses;
+    });
   }
 
   // Filter by beard
   public filterByBeard(hasBeard: boolean): void {
-    const filtered: Person[] = [];
-    for (let i = 0; i < this.currentPeople.length; i++) {
-      if (this.currentPeople[i].hasBeard === hasBeard) {
-        filtered.push(this.currentPeople[i]);
-      }
-    }
-    this.currentPeople = filtered;
-    this.displayPeople('people-container');
+    this.filterPeople(function(person) {
+      return person.hasBeard === hasBeard;
+    });
   }
 
   // Filter by mustache
   public filterByMustache(hasMustache: boolean): void {
-    const filtered: Person[] = [];
-    for (let i = 0; i < this.currentPeople.length; i++) {
-      if (this.currentPeople[i].hasMustache === hasMustache) {
-        filtered.push(this.currentPeople[i]);
-      }
-    }
-    this.currentPeople = filtered;
-    this.displayPeople('people-container');
+    this.filterPeople(function(person) {
+      return person.hasMustache === hasMustache;
+    });
   }
 
   // Filter by earrings
   public filterByEarrings(hasEarrings: boolean): void {
-    const filtered: Person[] = [];
-    for (let i = 0; i < this.currentPeople.length; i++) {
-      if (this.currentPeople[i].hasEarrings === hasEarrings) {
-        filtered.push(this.currentPeople[i]);
-      }
-    }
-    this.currentPeople = filtered;
-    this.displayPeople('people-container');
+    this.filterPeople(function(person) {
+      return person.hasEarrings === hasEarrings;
+    });
   }
 
   // Filter by eye color
   public filterByEyeColor(eyeColor: string): void {
-    const filtered: Person[] = [];
-    for (let i = 0; i < this.currentPeople.length; i++) {
-      if (this.currentPeople[i].eyeColor === eyeColor) {
-        filtered.push(this.currentPeople[i]);
-      }
-    }
-    this.currentPeople = filtered;
-    this.displayPeople('people-container');
+    this.filterPeople(function(person) {
+      return person.eyeColor === eyeColor;
+    });
   }
 
   // Filter by hair color
   public filterByHairColor(hairColor: string): void {
-    const filtered: Person[] = [];
-    for (let i = 0; i < this.currentPeople.length; i++) {
-      if (this.currentPeople[i].hairColor === hairColor) {
-        filtered.push(this.currentPeople[i]);
-      }
-    }
-    this.currentPeople = filtered;
-    this.displayPeople('people-container');
-  }
-
-
+    this.filterPeople(function(person) {
+      return person.hairColor === hairColor;
+    });
+  } 
 }
 
 // Global variable to access from button clicks
