@@ -4,6 +4,8 @@ import { Person } from '../types/Person.js';
 export class UIManager {
 
   // Create HTML for all person cards using simple for loop
+
+  // Create HTML for all person cards using modern for...of loop
   createAllPersonCards(people: Person[]): string {
     // Check if no people match the filters
     if (people.length === 0) {
@@ -14,8 +16,7 @@ export class UIManager {
     let allCardsHTML = '';
     
     // Loop through each person and add their card HTML
-    for (let i = 0; i < people.length; i++) {
-      const person = people[i];
+    for (const person of people) {
       const personCardHTML = this.createPersonCard(person);
       allCardsHTML = allCardsHTML + personCardHTML;
     }
