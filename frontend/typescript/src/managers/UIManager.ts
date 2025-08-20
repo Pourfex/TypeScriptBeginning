@@ -2,27 +2,20 @@ import { Person } from '../types/Person.js';
 
 // Manages all UI display operations
 export class UIManager {
-
+  
   // Create HTML for all person cards using simple for loop
 
-  // Create HTML for all person cards using modern for...of loop
+  // Create HTML for all person cards using Array.map
   createAllPersonCards(people: Person[]): string {
     // Check if no people match the filters
     if (people.length === 0) {
       return '<div class="no-results">No people match the current filters. Click "Show All" to reset.</div>';
     }
 
-    // Start with empty string
-    let allCardsHTML = '';
-    
-    // Loop through each person and add their card HTML
-    for (const person of people) {
-      const personCardHTML = this.createPersonCard(person);
-      allCardsHTML = allCardsHTML + personCardHTML;
-    }
-    
-    // Return the combined HTML
-    return allCardsHTML;
+    // Use Array.map to transform each person into HTML, then join
+    return people
+      .map(person => this.createPersonCard(person))
+      .join('');
   }
 
   // Create HTML for a single person card
