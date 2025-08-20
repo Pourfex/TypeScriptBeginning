@@ -21,8 +21,7 @@ export class FilterManager {
   // Generic filter function that takes a condition
   private filterPeople(condition: (person: Person) => boolean): void {
     const filtered: Person[] = [];
-    for (let i = 0; i < this.currentPeople.length; i++) {
-      const person = this.currentPeople[i];
+    for (const person of this.currentPeople) {
       if (condition(person)) {
         filtered.push(person);
       }
