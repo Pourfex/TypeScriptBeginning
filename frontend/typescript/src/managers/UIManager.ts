@@ -73,30 +73,30 @@ export class UIManager {
   createFilterButtons(): string {
     return `
       <div class="filter-buttons">
-        <button onclick="game.showAll()">Show All</button>
-        <button onclick="game.filterByHat(true)">Has Hat</button>
-        <button onclick="game.filterByHat(false)">No Hat</button>
-        <button onclick="game.filterByHair(true)">Has Hair</button>
-        <button onclick="game.filterByHair(false)">No Hair</button>
-        <button onclick="game.filterByGlasses(true)">Has Glasses</button>
-        <button onclick="game.filterByGlasses(false)">No Glasses</button>
-        <button onclick="game.filterByBeard(true)">Has Beard</button>
-        <button onclick="game.filterByBeard(false)">No Beard</button>
-        <button onclick="game.filterByMustache(true)">Has Mustache</button>
-        <button onclick="game.filterByMustache(false)">No Mustache</button>
-        <button onclick="game.filterByEarrings(true)">Has Earrings</button>
-        <button onclick="game.filterByEarrings(false)">No Earrings</button>
-        <button onclick="game.filterByEyeColor('blue')">Blue Eyes</button>
-        <button onclick="game.filterByEyeColor('brown')">Brown Eyes</button>
-        <button onclick="game.filterByEyeColor('green')">Green Eyes</button>
-        <button onclick="game.filterByEyeColor('hazel')">Hazel Eyes</button>
-        <button onclick="game.filterByEyeColor('gray')">Gray Eyes</button>
-        <button onclick="game.filterByHairColor('blonde')">Blonde Hair</button>
-        <button onclick="game.filterByHairColor('brown')">Brown Hair</button>
-        <button onclick="game.filterByHairColor('black')">Black Hair</button>
-        <button onclick="game.filterByHairColor('red')">Red Hair</button>
-        <button onclick="game.filterByHairColor('gray')">Gray Hair</button>
-        <button onclick="game.filterByHairColor('white')">White Hair</button>
+        <button onclick="window.game.showAll()">Show All</button>
+        <button onclick="window.game.filterByHat(true)">Has Hat</button>
+        <button onclick="window.game.filterByHat(false)">No Hat</button>
+        <button onclick="window.game.filterByHair(true)">Has Hair</button>
+        <button onclick="window.game.filterByHair(false)">No Hair</button>
+        <button onclick="window.game.filterByGlasses(true)">Has Glasses</button>
+        <button onclick="window.game.filterByGlasses(false)">No Glasses</button>
+        <button onclick="window.game.filterByBeard(true)">Has Beard</button>
+        <button onclick="window.game.filterByBeard(false)">No Beard</button>
+        <button onclick="window.game.filterByMustache(true)">Has Mustache</button>
+        <button onclick="window.game.filterByMustache(false)">No Mustache</button>
+        <button onclick="window.game.filterByEarrings(true)">Has Earrings</button>
+        <button onclick="window.game.filterByEarrings(false)">No Earrings</button>
+        <button onclick="window.game.filterByEyeColor('blue')">Blue Eyes</button>
+        <button onclick="window.game.filterByEyeColor('brown')">Brown Eyes</button>
+        <button onclick="window.game.filterByEyeColor('green')">Green Eyes</button>
+        <button onclick="window.game.filterByEyeColor('hazel')">Hazel Eyes</button>
+        <button onclick="window.game.filterByEyeColor('gray')">Gray Eyes</button>
+        <button onclick="window.game.filterByHairColor('blonde')">Blonde Hair</button>
+        <button onclick="window.game.filterByHairColor('brown')">Brown Hair</button>
+        <button onclick="window.game.filterByHairColor('black')">Black Hair</button>
+        <button onclick="window.game.filterByHairColor('red')">Red Hair</button>
+        <button onclick="window.game.filterByHairColor('gray')">Gray Hair</button>
+        <button onclick="window.game.filterByHairColor('white')">White Hair</button>
       </div>
     `;
   }
