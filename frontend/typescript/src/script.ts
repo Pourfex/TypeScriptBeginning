@@ -360,11 +360,15 @@ class GuessWhoGame {
   }
 }
 
-// Global variable to access from button clicks
-let game: GuessWhoGame;
+// Declare the global game variable
+declare global {
+  interface Window {
+    game: GuessWhoGame;
+  }
+}
 
 // Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', (): void => {
-  game = new GuessWhoGame();
-  game.showAll(); // Initialize with all people
+  window.game = new GuessWhoGame();
+  window.game.showAll();
 });
