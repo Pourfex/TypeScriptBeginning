@@ -6,6 +6,33 @@ export class FilterManager {
 
   constructor(private allPeople: Person[]) {
     this.currentPeople = [...allPeople]; // Copy all people initially
+    this.runDataValidation(); // Validate data using array methods
+  }
+
+  // Validate character data using Array.every, Array.some, and Array.find
+  private runDataValidation(): void {
+    // Check if ALL characters have valid names using Array.every
+    const allHaveNames = this.allPeople.every(person => 
+      person.name && person.name.trim().length > 0
+    );
+    console.log(`All characters have valid names: ${allHaveNames}`);
+
+    // Check if SOME characters have hats using Array.some
+    const someHaveHats = this.allPeople.some(person => person.hasHat);
+    console.log(`Some characters have hats: ${someHaveHats}`);
+
+    // Find a character with glasses using Array.find
+    const personWithGlasses = this.allPeople.find(person => person.hasGlasses);
+    if (personWithGlasses) {
+      console.log(`Found character with glasses: ${personWithGlasses.name}`);
+    }
+
+    // Check if ALL eye colors are valid using Array.every
+    const validEyeColors = ['blue', 'brown', 'green', 'hazel', 'gray'];
+    const allEyeColorsValid = this.allPeople.every(person => 
+      validEyeColors.includes(person.eyeColor)
+    );
+    console.log(`All eye colors are valid: ${allEyeColorsValid}`);
   }
 
   // Get the currently filtered people
@@ -18,15 +45,9 @@ export class FilterManager {
     this.currentPeople = [...this.allPeople];
   }
 
-  // Generic filter function that takes a condition
+  // Generic filter function using Array.filter method
   private filterPeople(condition: (person: Person) => boolean): void {
-    const filtered: Person[] = [];
-    for (const person of this.currentPeople) {
-      if (condition(person)) {
-        filtered.push(person);
-      }
-    }
-    this.currentPeople = filtered;
+    this.currentPeople = this.currentPeople.filter(condition);
   }
 
   // Filter by hat
