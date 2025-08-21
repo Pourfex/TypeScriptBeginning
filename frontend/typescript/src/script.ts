@@ -368,7 +368,11 @@ declare global {
 }
 
 // Wait for DOM to be fully loaded
-document.addEventListener('DOMContentLoaded', (): void => {
-  window.game = new GuessWhoGame();
-  window.game.showAll();
+document.addEventListener('DOMContentLoaded', async (): Promise<void> => {
+  try {
+    window.game = new GuessWhoGame();
+    await window.game.showAll(); // Now using async/await
+  } catch (error) {
+    console.error('Failed to initialize game:', error);
+  }
 });
