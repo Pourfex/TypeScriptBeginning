@@ -1,6 +1,7 @@
 import { FilterManager } from './FilterManager.js';
 import { UIManager } from './UIManager.js';
 import { characters } from '../data/characters.js';
+import { Person } from '../types/Person.js';
 
 // Main game class that coordinates all the managers
 export class Game {
@@ -12,9 +13,68 @@ export class Game {
     this.uiManager = new UIManager();
   }
 
-  // Initialize and display the game
-  start(): void {
+  // Initialize and display the game with modern features
+  async start(): Promise<void> {
+    // Use spread operator to create a copy of characters for initial state
+    const initialCharacters = [...characters];
+    
+    // Destructuring with default values  
+    const { length: totalCharacters } = initialCharacters;
+    
+    console.log(`Starting game with ${totalCharacters} characters`);
+    
+    // Show all characters initially
     this.showAll();
+    
+    // Optional: Get game statistics using modern features
+    await this.getGameStatistics();
+  }
+
+  // Get game statistics using modern array methods and destructuring
+  private async getGameStatistics(): Promise<void> {
+    const stats = await this.calculateStats([...this.filterManager.getCurrentPeople()]);
+    
+    // Destructuring the statistics object
+    const { 
+      totalPeople, 
+      demographics,
+      ...otherStats 
+    } = stats;
+    
+    console.log('Game Statistics:', {
+      totalPeople,
+      demographics: { ...demographics }, // Spread operator
+      ...otherStats // Spread other statistics
+    });
+  }
+
+  // Calculate statistics using promises and modern JS features
+  private calculateStats(people: Person[]): Promise<{
+    totalPeople: number;
+    demographics: { [key: string]: number };
+    averageFeatures: number;
+  }> {
+    return new Promise((resolve) => {
+      // Using destructuring in reduce operations
+      const demographics = people.reduce((acc, { hasHat, hasGlasses, hasBeard }) => {
+        return {
+          ...acc, // Spread existing accumulator
+          hats: acc.hats + (hasHat ? 1 : 0),
+          glasses: acc.glasses + (hasGlasses ? 1 : 0),
+          beards: acc.beards + (hasBeard ? 1 : 0)
+        };
+      }, { hats: 0, glasses: 0, beards: 0 });
+
+      // Calculate average features using destructuring
+      const featureCounts = Object.values(demographics);
+      const averageFeatures = featureCounts.reduce((sum: number, count: number) => sum + count, 0) / featureCounts.length;
+
+      resolve({
+        totalPeople: people.length,
+        demographics,
+        averageFeatures
+      });
+    });
   }
 
   // Show all people - reset filters
