@@ -1,11 +1,10 @@
 {
-  "name": "typescript-cli-hello-world",
+  "name": "ign-wms-fetcher",
   "version": "1.0.0",
-  "description": "TypeScript CLI Hello World application",
-  "type": "module",
+  "description": "CLI tool to fetch images from IGN WMS service",
   "main": "dist/index.js",
   "bin": {
-    "ts-hello": "./dist/index.js"
+    "ign-wms-fetcher": "./dist/index.js"
   },
   "scripts": {
     "build": "tsc",
@@ -17,7 +16,10 @@
   "keywords": [
     "cli",
     "typescript",
-    "hello-world",
+    "ign",
+    "wms",
+    "geospatial",
+    "imagery",
     "node"
   ],
   "author": "",
