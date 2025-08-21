@@ -3,14 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TypeScript Hello World</title>
+    <title>IGN WMS Image Fetcher</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="container">
-      <h1>TypeScript Project</h1>
-      <div id="hello-world"></div>
+      <h1>IGN WMS Image Fetcher</h1>
+      <div class="form-group">
+        <label for="address-input">Enter Address:</label>
+        <input type="text" id="address-input" placeholder="e.g., 4 rue alfred kestler" />
+        <button id="fetch-button">Fetch Image</button>
+      </div>
+      <div id="status"></div>
+      <div id="progress"></div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.9.0/proj4.min.js"></script>
     <script src="dist/script.js"></script>
   </body>
 </html>
