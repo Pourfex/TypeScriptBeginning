@@ -6,33 +6,88 @@ export class FilterManager {
 
   constructor(private allPeople: Person[]) {
     this.currentPeople = [...allPeople]; // Copy all people initially
-    this.runDataValidation(); // Validate data using array methods
+    this.initializeAsync(); // Initialize with async validation
   }
 
-  // Validate character data using Array.every, Array.some, and Array.find
-  private runDataValidation(): void {
-    // Check if ALL characters have valid names using Array.every
-    const allHaveNames = this.allPeople.every(person => 
-      person.name && person.name.trim().length > 0
-    );
-    console.log(`All characters have valid names: ${allHaveNames}`);
-
-    // Check if SOME characters have hats using Array.some
-    const someHaveHats = this.allPeople.some(person => person.hasHat);
-    console.log(`Some characters have hats: ${someHaveHats}`);
-
-    // Find a character with glasses using Array.find
-    const personWithGlasses = this.allPeople.find(person => person.hasGlasses);
-    if (personWithGlasses) {
-      console.log(`Found character with glasses: ${personWithGlasses.name}`);
+  // Async initialization with data validation
+  private async initializeAsync(): Promise<void> {
+    try {
+      await this.runDataValidation();
+    } catch (error) {
+      console.error('Data validation failed:', error);
     }
+  }
 
-    // Check if ALL eye colors are valid using Array.every
-    const validEyeColors = ['blue', 'brown', 'green', 'hazel', 'gray'];
-    const allEyeColorsValid = this.allPeople.every(person => 
-      validEyeColors.includes(person.eyeColor)
+  // Enhanced data validation using promises, async/await, destructuring, and spread operator
+  private async runDataValidation(): Promise<void> {
+    // Simulate async validation with Promise
+    const validateAsync = (data: Person[]): Promise<Person[]> => {
+      return new Promise((resolve) => {
+        setTimeout(() => resolve(data), 100); // Simulate async operation
+      });
+    };
+
+    const validatedPeople = await validateAsync([...this.allPeople]); // Spread operator
+    
+    // Destructuring assignment for validation results
+    const { 
+      validNames, 
+      hasHats, 
+      hasGlasses, 
+      validEyeColors,
+      statistics 
+    } = await this.performValidationChecks(validatedPeople);
+
+    // Log results using destructured values
+    console.log('Data Validation Results:', {
+      validNames,
+      hasHats,
+      hasGlasses,
+      validEyeColors,
+      ...statistics // Spread operator to merge statistics
+    });
+  }
+
+  // Separate validation logic using destructuring and modern features
+  private async performValidationChecks(people: Person[]): Promise<{
+    validNames: boolean;
+    hasHats: boolean;
+    hasGlasses: Person | undefined;
+    validEyeColors: boolean;
+    statistics: { totalPeople: number; averageHairColors: number };
+  }> {
+    // Using destructuring in array methods
+    const validNames = people.every(({ name }) => name && name.trim().length > 0);
+    
+    const hasHats = people.some(({ hasHat }) => hasHat);
+    
+    const hasGlasses = people.find(({ hasGlasses }) => hasGlasses);
+    
+    // Destructuring with default values
+    const allowedEyeColors = ['blue', 'brown', 'green', 'hazel', 'gray'];
+    const validEyeColors = people.every(({ eyeColor = 'unknown' }) => 
+      allowedEyeColors.includes(eyeColor)
     );
-    console.log(`All eye colors are valid: ${allEyeColorsValid}`);
+
+    // Using spread operator and destructuring for statistics
+    const hairColors = people
+      .map(({ hairColor }) => hairColor)
+      .filter(color => color !== null);
+    
+    const uniqueHairColors = [...new Set(hairColors)]; // Spread operator with Set
+    
+    const statistics = {
+      totalPeople: people.length,
+      averageHairColors: uniqueHairColors.length
+    };
+
+    return {
+      validNames,
+      hasHats,
+      hasGlasses,
+      validEyeColors,
+      statistics
+    };
   }
 
   // Get the currently filtered people
