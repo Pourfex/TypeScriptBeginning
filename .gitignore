@@ -4,3 +4,4 @@ backend/typescript/dist
 backend/typescript/node_modules
 frontend/node_modules
 frontend/typescript/dist
+*.DS_Store
