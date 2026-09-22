@@ -22,7 +22,7 @@ class GuessWhoGame {
       hasGlasses: false,
       hasBeard: false,
       hasMustache: false,
-      hasEarrings: true
+      hasEarrings: true,
     },
     {
       name: 'Professor Blackwood',
@@ -33,7 +33,7 @@ class GuessWhoGame {
       hasGlasses: true,
       hasBeard: true,
       hasMustache: true,
-      hasEarrings: false
+      hasEarrings: false,
     },
     {
       name: 'Sunny the Artist',
@@ -44,7 +44,7 @@ class GuessWhoGame {
       hasGlasses: true,
       hasBeard: false,
       hasMustache: false,
-      hasEarrings: true
+      hasEarrings: true,
     },
     {
       name: 'Detective Rodriguez',
@@ -55,7 +55,7 @@ class GuessWhoGame {
       hasGlasses: false,
       hasBeard: false,
       hasMustache: true,
-      hasEarrings: false
+      hasEarrings: false,
     },
     {
       name: 'Grandpa Winston',
@@ -66,7 +66,7 @@ class GuessWhoGame {
       hasGlasses: true,
       hasBeard: true,
       hasMustache: true,
-      hasEarrings: false
+      hasEarrings: false,
     },
     {
       name: 'Luna the Dancer',
@@ -77,7 +77,7 @@ class GuessWhoGame {
       hasGlasses: false,
       hasBeard: false,
       hasMustache: false,
-      hasEarrings: true
+      hasEarrings: true,
     },
     {
       name: 'Chef Giuseppe',
@@ -88,7 +88,7 @@ class GuessWhoGame {
       hasGlasses: false,
       hasBeard: false,
       hasMustache: true,
-      hasEarrings: false
+      hasEarrings: false,
     },
     {
       name: 'Mystic Sage',
@@ -99,7 +99,7 @@ class GuessWhoGame {
       hasGlasses: true,
       hasBeard: true,
       hasMustache: false,
-      hasEarrings: true
+      hasEarrings: true,
     },
     {
       name: 'Rebel Zara',
@@ -110,7 +110,7 @@ class GuessWhoGame {
       hasGlasses: true,
       hasBeard: false,
       hasMustache: false,
-      hasEarrings: true
+      hasEarrings: true,
     },
     {
       name: 'Admiral Storm',
@@ -121,7 +121,7 @@ class GuessWhoGame {
       hasGlasses: false,
       hasBeard: true,
       hasMustache: true,
-      hasEarrings: false
+      hasEarrings: false,
     },
     {
       name: 'Pixie Moonbeam',
@@ -132,7 +132,7 @@ class GuessWhoGame {
       hasGlasses: false,
       hasBeard: false,
       hasMustache: false,
-      hasEarrings: true
+      hasEarrings: true,
     },
     {
       name: 'Doctor Vega',
@@ -143,8 +143,8 @@ class GuessWhoGame {
       hasGlasses: true,
       hasBeard: false,
       hasMustache: false,
-      hasEarrings: false
-    }
+      hasEarrings: false,
+    },
   ];
   private currentPeople: Person[] = [];
 
@@ -197,14 +197,14 @@ class GuessWhoGame {
 
     // Start with empty string
     let allCardsHTML = '';
-    
+
     // Loop through each person and add their card HTML
     for (let i = 0; i < this.currentPeople.length; i++) {
       const person = this.currentPeople[i];
       const personCardHTML = this.createPersonCard(person);
       allCardsHTML = allCardsHTML + personCardHTML;
     }
-    
+
     // Return the combined HTML
     return allCardsHTML;
   }
@@ -358,8 +358,6 @@ class GuessWhoGame {
     this.currentPeople = filtered;
     this.displayPeople('people-container');
   }
-
-
 }
 
 // Global variable to access from button clicks
