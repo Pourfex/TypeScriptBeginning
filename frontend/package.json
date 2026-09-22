@@ -12,8 +12,8 @@
     "start:ts": "npm run build:ts && npm run serve:ts",
     "start:both": "concurrently \"npm run serve:js\" \"npm run build:ts && npm run serve:ts\"",
     "dev:ts": "concurrently \"npm run build:ts:watch\" \"npm run serve:ts\"",
-    "lint": "eslint . --ext .js,.ts",
-    "lint:fix": "eslint . --ext .js,.ts --fix",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },
@@ -25,14 +25,16 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^6.21.0",
-    "@typescript-eslint/parser": "^6.21.0",
-    "concurrently": "^8.2.0",
-    "eslint": "^8.45.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-prettier": "^5.0.0",
+    "@eslint/js": "^10.0.1",
+    "@typescript/native": "npm:typescript@^7.0.2",
+    "concurrently": "^10.0.5",
+    "eslint": "^10.11.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.6",
+    "globals": "^17.12.0",
     "http-server": "^14.1.1",
-    "prettier": "^3.0.0",
-    "typescript": "^5.1.6"
+    "prettier": "^3.9.8",
+    "typescript": "npm:@typescript/typescript6@^6.0.2",
+    "typescript-eslint": "^8.70.1"
   }
 }

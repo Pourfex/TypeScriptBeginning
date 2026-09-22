@@ -2,6 +2,7 @@
   "name": "typescript-cli-hello-world",
   "version": "1.0.0",
   "description": "TypeScript CLI Hello World application",
+  "type": "module",
   "main": "dist/index.js",
   "bin": {
     "ts-hello": "./dist/index.js"
@@ -10,8 +11,8 @@
     "build": "tsc",
     "build:watch": "tsc --watch",
     "start": "npm run build && node dist/index.js",
-    "dev": "ts-node src/index.ts",
-    "dev:watch": "nodemon --exec ts-node src/index.ts"
+    "dev": "tsx src/index.ts",
+    "dev:watch": "nodemon --exec tsx src/index.ts"
   },
   "keywords": [
     "cli",
@@ -22,14 +23,14 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "chalk": "^4.1.2",
-    "figlet": "^1.6.0"
+    "chalk": "^6.0.0",
+    "figlet": "^1.11.4"
   },
   "devDependencies": {
-    "@types/figlet": "^1.5.6",
-    "@types/node": "^20.4.5",
-    "nodemon": "^3.0.1",
-    "ts-node": "^10.9.1",
-    "typescript": "^5.1.6"
+    "@types/figlet": "^1.7.0",
+    "@types/node": "^26.6.2",
+    "nodemon": "^3.1.14",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
   }
 }

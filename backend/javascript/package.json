@@ -2,6 +2,7 @@
   "name": "javascript-cli-hello-world",
   "version": "1.0.0",
   "description": "JavaScript CLI Hello World application",
+  "type": "module",
   "main": "index.js",
   "bin": {
     "js-hello": "./index.js"
@@ -19,10 +20,10 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "chalk": "^4.1.2",
-    "figlet": "^1.6.0"
+    "chalk": "^6.0.0",
+    "figlet": "^1.11.4"
   },
   "devDependencies": {
-    "nodemon": "^3.0.1"
+    "nodemon": "^3.1.14"
   }
 }

@@ -4,8 +4,8 @@
  * JavaScript CLI Hello World Application
  */
 
-const chalk = require('chalk');
-const figlet = require('figlet');
+import chalk from 'chalk';
+import figlet from 'figlet';
 
 function displayBanner() {
   console.log(

@@ -56,7 +56,7 @@ backend/
 
 ### Super Command (Run Both CLIs)
 
-```bash
+````bash
 # Run both applications
 npm run start:both
 
@@ -71,7 +71,7 @@ npm run start:js
 
 # TypeScript CLI only
 npm run start:ts
-```
+````
 
 ### Development Mode
 

@@ -65,6 +65,7 @@ npm run start:both
 ```
 
 This will open:
+
 - JavaScript project: http://localhost:3000
 - TypeScript project: http://localhost:3001
 
@@ -92,15 +93,17 @@ npm run start:ts
 ## Project Details
 
 ### JavaScript Project
+
 - **URL**: http://localhost:3000
 - **Features**: Simple DOM manipulation, modern CSS styling
 - **Color Scheme**: Blue gradient background
 - **Technology**: Vanilla JavaScript + HTML + CSS
 
 ### TypeScript Project
+
 - **URL**: http://localhost:3001
 - **Features**: Object-oriented approach with interfaces and classes
-- **Color Scheme**: Orange gradient background  
+- **Color Scheme**: Orange gradient background
 - **Technology**: TypeScript (compiled to JavaScript) + HTML + CSS
 - **Compilation**: Automatic TypeScript compilation with source maps
 
