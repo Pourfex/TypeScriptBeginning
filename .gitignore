@@ -2,6 +2,7 @@ backend/javascript/node_modules
 backend/node_modules
 backend/typescript/dist
 backend/typescript/node_modules
+backend/typescript/tmp
 frontend/node_modules
 frontend/typescript/dist
 *.DS_Store

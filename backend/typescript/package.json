@@ -26,7 +26,9 @@
   "license": "MIT",
   "dependencies": {
     "chalk": "^6.0.0",
-    "figlet": "^1.11.4"
+    "figlet": "^1.11.4",
+    "node-fetch": "^2.7.0",
+    "proj4": "^2.7.0"
   },
   "devDependencies": {
     "@types/figlet": "^1.7.0",
@@ -34,6 +36,7 @@
     "nodemon": "^3.1.14",
     "tsx": "^4.23.15",
     "typescript": "^7.0.2",
-	"@types/proj4": "^2.5.2"
+	  "@types/proj4": "^2.5.2",
+    "@types/node-fetch": "^2.6.4"
   }
 }

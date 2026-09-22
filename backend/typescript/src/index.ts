@@ -380,7 +380,7 @@ async function main(): Promise<void> {
   // Step 4: Fetch WMS image
   console.log('\n' + chalk.yellow('🖼️  Step 4: Fetching WMS image...'));
   
-  const outputDir = '/tmp/ign-complete-workflow';
+  const outputDir = path.join(process.cwd(), 'tmp');
   const wmsOptions: WMSOptions = {
     epsg: detectedZone.code,
     bbox: bbox,
