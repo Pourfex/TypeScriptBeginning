@@ -43,7 +43,9 @@ h2 {
   border-radius: 12px;
   padding: 20px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   border: 2px solid transparent;
 }
 
@@ -111,57 +113,138 @@ h2 {
 }
 
 /* Eye colors */
-.value.eye-blue { background: #bee3f8; color: #2a4365; }
-.value.eye-brown { background: #d6bcb0; color: #4a2c2a; }
-.value.eye-green { background: #c6f6d5; color: #22543d; }
-.value.eye-hazel { background: #faf0a3; color: #744210; }
-.value.eye-gray { background: #e2e8f0; color: #2d3748; }
+.value.eye-blue {
+  background: #bee3f8;
+  color: #2a4365;
+}
+.value.eye-brown {
+  background: #d6bcb0;
+  color: #4a2c2a;
+}
+.value.eye-green {
+  background: #c6f6d5;
+  color: #22543d;
+}
+.value.eye-hazel {
+  background: #faf0a3;
+  color: #744210;
+}
+.value.eye-gray {
+  background: #e2e8f0;
+  color: #2d3748;
+}
 
 /* Hair colors */
-.value.hair-blonde { background: #fef7c3; color: #744210; }
-.value.hair-brown { background: #d6bcb0; color: #4a2c2a; }
-.value.hair-black { background: #2d3748; color: white; }
-.value.hair-red { background: #feb2b2; color: #742a2a; }
-.value.hair-gray { background: #e2e8f0; color: #4a5568; }
-.value.hair-white { background: #f7fafc; color: #2d3748; border: 1px solid #e2e8f0; }
+.value.hair-blonde {
+  background: #fef7c3;
+  color: #744210;
+}
+.value.hair-brown {
+  background: #d6bcb0;
+  color: #4a2c2a;
+}
+.value.hair-black {
+  background: #2d3748;
+  color: white;
+}
+.value.hair-red {
+  background: #feb2b2;
+  color: #742a2a;
+}
+.value.hair-gray {
+  background: #e2e8f0;
+  color: #4a5568;
+}
+.value.hair-white {
+  background: #f7fafc;
+  color: #2d3748;
+  border: 1px solid #e2e8f0;
+}
 
 /* Skin tones */
-.value.skin-light { background: #fef7f7; color: #4a5568; border: 1px solid #fed7d7; }
-.value.skin-medium { background: #f4e8d0; color: #744210; }
-.value.skin-dark { background: #d6bcb0; color: #4a2c2a; }
-.value.skin-olive { background: #e6f4e6; color: #22543d; }
+.value.skin-light {
+  background: #fef7f7;
+  color: #4a5568;
+  border: 1px solid #fed7d7;
+}
+.value.skin-medium {
+  background: #f4e8d0;
+  color: #744210;
+}
+.value.skin-dark {
+  background: #d6bcb0;
+  color: #4a2c2a;
+}
+.value.skin-olive {
+  background: #e6f4e6;
+  color: #22543d;
+}
 
 /* Lip colors */
-.value.lip-pink { background: #fed7e2; color: #97266d; }
-.value.lip-red { background: #feb2b2; color: #742a2a; }
-.value.lip-natural { background: #f7fafc; color: #4a5568; border: 1px solid #e2e8f0; }
-.value.lip-purple { background: #e9d8fd; color: #553c9a; }
+.value.lip-pink {
+  background: #fed7e2;
+  color: #97266d;
+}
+.value.lip-red {
+  background: #feb2b2;
+  color: #742a2a;
+}
+.value.lip-natural {
+  background: #f7fafc;
+  color: #4a5568;
+  border: 1px solid #e2e8f0;
+}
+.value.lip-purple {
+  background: #e9d8fd;
+  color: #553c9a;
+}
 
 /* Age groups */
-.value.age-young { background: #c6f6d5; color: #22543d; }
-.value.age-middle-aged { background: #fef7c3; color: #744210; }
-.value.age-elderly { background: #e2e8f0; color: #4a5568; }
+.value.age-young {
+  background: #c6f6d5;
+  color: #22543d;
+}
+.value.age-middle-aged {
+  background: #fef7c3;
+  color: #744210;
+}
+.value.age-elderly {
+  background: #e2e8f0;
+  color: #4a5568;
+}
 
 /* Expressions */
-.value.expr-smiling { background: #c6f6d5; color: #22543d; }
-.value.expr-serious { background: #e2e8f0; color: #4a5568; }
-.value.expr-surprised { background: #fef7c3; color: #744210; }
-.value.expr-sleepy { background: #e9d8fd; color: #553c9a; }
+.value.expr-smiling {
+  background: #c6f6d5;
+  color: #22543d;
+}
+.value.expr-serious {
+  background: #e2e8f0;
+  color: #4a5568;
+}
+.value.expr-surprised {
+  background: #fef7c3;
+  color: #744210;
+}
+.value.expr-sleepy {
+  background: #e9d8fd;
+  color: #553c9a;
+}
 
 /* Responsive design */
 @media (max-width: 768px) {
   .people-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .container {
     padding: 1rem;
   }
-  
+
   h1 {
     font-size: 2rem;
   }
-  
+
   .attributes {
     grid-template-columns: 1fr;
   }
